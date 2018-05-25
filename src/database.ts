@@ -10,6 +10,7 @@ export interface Card {
   location: { lat: number; lng: number }; // Reverse geo
   tags: Array<{ tag: string; score: number }>;
   title: string;
+  score: number;
 }
 
 export class QardsDatabase {
@@ -28,7 +29,8 @@ export class QardsDatabase {
       imageUrl: data.imageUrl,
       location: [data.location.lat, data.location.lng],
       tags: data.tags,
-      title: data.title
+      title: data.title,
+      score: data.score
     });
   }
 
