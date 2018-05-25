@@ -1,0 +1,17 @@
+{
+  "extends": "./node_modules/@conclurer/coding-conventions/tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "es2015",
+      "esnext.asynciterable",
+      "dom"
+    ],
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["src"]
+}

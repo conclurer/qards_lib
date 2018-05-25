@@ -1,0 +1,16 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier", "./node_modules/@conclurer/coding-conventions/tslint.json"],
+  "rules": {
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "interface-name": [true, "never-prefix"],
+    "no-parameter-properties": false,
+    "no-duplicate-imports": true,
+    "no-unnecessary-callback-wrapper": true,
+    "no-inferrable-types": true,
+    "no-duplicate-variable": true,
+    "no-unused-variable": [true],
+    "member-access": false,
+    "curly": false,
+    "object-literal-sort-keys": false
+  }
+}

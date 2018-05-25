@@ -1,0 +1,77 @@
+{
+  "name": "qards-lib",
+  "version": "1.0.0-beta.1",
+  "main": "dist/qards-lib.umd.js",
+  "module": "dist/qards-lib.es5.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conclurer/edelog.git"
+  },
+  "author": "Conclurer GmbH",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/conclurer/edelog"
+  },
+  "homepage": "https://edelog.com",
+  "scripts": {
+    "lint": "tslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "start": "rollup -c rollup.config.ts -w",
+    "format": "format-coding-conventions",
+    "prepare": "prepare-coding-conventions",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "firebase": "^5.0.4"
+  },
+  "devDependencies": {
+    "@conclurer/coding-conventions": "^1.0.0-beta.7",
+    "@types/jest": "^22.2.3",
+    "@types/node": "^9.6.6",
+    "jest": "^23.0.0",
+    "lodash.camelcase": "^4.3.0",
+    "prettier": "^1.12.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.58.1",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.13.0",
+    "rxjs": "6.1.0",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.12.0",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverage": true
+  }
+}
