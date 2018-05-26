@@ -64,11 +64,18 @@ export class QardsDatabase {
       .get();
   }
 
-  public getRandomCard(): Promise<firebase.firestore.QuerySnapshot> {
+  public getRandomCard(): Promise<firebase.firestore.QueryDocumentSnapshot> {
     return this.database
       .collection('cards')
       .where('holderId', '==', null)
-      .limit(1)
-      .get();
+      .get()
+      .then((snapshots: firebase.firestore.QuerySnapshot) => {
+        const length = snapshots.docs.length;
+        return snapshots.docs[this.getRandomInt(0, length)];
+      });
+  }
+
+  private getRandomInt(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
