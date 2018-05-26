@@ -3,7 +3,7 @@ import { DocumentSnapshot } from '@google-cloud/firestore';
 import { EventContext } from 'firebase-functions';
 import * as firebaseAdmin from 'firebase-admin';
 
-export const defaultCardPoints = () => {
+export function defaultCardPoints() {
     return functions
         .firestore
         .document('cards/{cardId}')
