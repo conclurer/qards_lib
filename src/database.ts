@@ -11,6 +11,7 @@ export interface Card {
   score: number;
   tags: Array<{ tag: string; score: number }>;
   title: string;
+  score: number;
 }
 
 export class QardsDatabase {
@@ -30,7 +31,8 @@ export class QardsDatabase {
       location: [data.location.lat, data.location.lng],
       score: data.score,
       tags: data.tags,
-      title: data.title
+      title: data.title,
+      score: data.score
     });
   }
 

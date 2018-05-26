@@ -47,3 +47,8 @@ Thumbs.db
 .editorconfig
 .nvmrc
 .prettierrc.yaml
+
+
+cloud/functions/node_modules
+cloud/functions/lib
+cloud/functions/package-lock.json

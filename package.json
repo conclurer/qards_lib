@@ -28,6 +28,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^0.14.1",
     "firebase": "^5.0.4"
   },
   "devDependencies": {
