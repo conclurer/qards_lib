@@ -63,4 +63,12 @@ export class QardsDatabase {
       .where('holderId', '==', holderId)
       .get();
   }
+
+  public getRandomCard(): Promise<firebase.firestore.QuerySnapshot> {
+    return this.database
+      .collection('cards')
+      .where('holderId', '==', null)
+      .limit(1)
+      .get();
+  }
 }
