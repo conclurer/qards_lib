@@ -7,6 +7,7 @@ export function defaultCardPoints() {
         .firestore
         .document('cards/{cardId}')
         .onCreate((snapshot: DocumentSnapshot, context: EventContext) => {
+            console.log('Update Score On Create', snapshot.data().score);
             return snapshot.ref.set({
                 score: 10
             }, { merge: true });
