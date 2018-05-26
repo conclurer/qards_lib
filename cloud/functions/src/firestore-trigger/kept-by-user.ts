@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions';
 import { DocumentSnapshot } from '@google-cloud/firestore';
 import { EventContext } from 'firebase-functions';
 
-export function backToPool() {
+export function keptByUser() {
   return functions.firestore
     .document('cards/{cardId}')
     .onUpdate(
@@ -11,10 +11,10 @@ export function backToPool() {
         const card = change.after.data();
         const previousCard = change.before.data();
 
-        if (!card.holderId && previousCard.holderId) {
+        if (card.holderId && !previousCard.holderId) {
             return change.after.ref.set(
             {
-                score: calcDecrease(card.score)
+                score: calcIncrease(card.score)
             },
             { merge: true }
             );
@@ -25,11 +25,8 @@ export function backToPool() {
     );
 }
 
-function calcDecrease(score: number): number {
-    
+function calcIncrease(score: number): number {
     let internalScore = score;
-    let decreasable = Math.round(score / 100);
-    decreasable = decreasable < 1 ? 1 : decreasable;
-    internalScore =+ decreasable;
+    internalScore =+ (score / 2);
     return internalScore;
 }
