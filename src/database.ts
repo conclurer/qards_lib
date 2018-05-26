@@ -8,6 +8,7 @@ export interface Card {
   imageId: string;
   imageUrl: string;
   location: { lat: number; lng: number }; // Reverse geo
+  score: number;
   tags: Array<{ tag: string; score: number }>;
   title: string;
 }
@@ -27,6 +28,7 @@ export class QardsDatabase {
       imageId: data.imageId,
       imageUrl: data.imageUrl,
       location: [data.location.lat, data.location.lng],
+      score: data.score,
       tags: data.tags,
       title: data.title
     });
@@ -48,5 +50,12 @@ export class QardsDatabase {
       .set({
         holderId: null
       });
+  }
+
+  public getOwnCards(holderId: string): Promise<any> {
+    return this.database
+      .collection('cards')
+      .where('holderId', '==', holderId)
+      .get();
   }
 }
