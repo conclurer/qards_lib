@@ -41,7 +41,7 @@ export class QardsDatabase {
     return this.database
       .collection('cards')
       .doc(cardId)
-      .set({
+      .update({
         holderId: userId
       });
   }
@@ -50,7 +50,7 @@ export class QardsDatabase {
     return this.database
       .collection('cards')
       .doc(cardId)
-      .set({
+      .update({
         holderId: null
       });
   }
