@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import 'firebase/storage';
 
 export enum endpoints {
   CARDS = '/cardImages'

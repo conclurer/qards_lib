@@ -7,11 +7,10 @@ export interface Card {
   holderId: string | null;
   imageId: string;
   imageUrl: string;
-  location: { lat: number; lng: number }; // Reverse geo
+  location: { _lat: number; _long: number }; // Reverse geo
   score: number;
   tags: Array<{ tag: string; score: number }>;
   title: string;
-  score: number;
 }
 
 export class QardsDatabase {
@@ -28,11 +27,13 @@ export class QardsDatabase {
       holderId: data.holderId,
       imageId: data.imageId,
       imageUrl: data.imageUrl,
-      location: [data.location.lat, data.location.lng],
+      location: new firebase.firestore.GeoPoint(
+        data.location._lat,
+        data.location._long
+      ),
       score: data.score,
       tags: data.tags,
-      title: data.title,
-      score: data.score
+      title: data.title
     });
   }
 
@@ -54,7 +55,9 @@ export class QardsDatabase {
       });
   }
 
-  public getOwnCards(holderId: string): Promise<any> {
+  public getOwnCards(
+    holderId: string
+  ): Promise<firebase.firestore.QuerySnapshot> {
     return this.database
       .collection('cards')
       .where('holderId', '==', holderId)
