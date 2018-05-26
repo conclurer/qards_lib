@@ -27,6 +27,6 @@ export function keptByUser() {
 
 function calcIncrease(score: number): number {
     let internalScore = score;
-    internalScore =+ (score / 2);
-    return internalScore;
+    internalScore = internalScore * 1.5;;
+    return Math.ceil(internalScore);
 }

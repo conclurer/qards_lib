@@ -26,10 +26,9 @@ export function backToPool() {
 }
 
 function calcDecrease(score: number): number {
-    
+
     let internalScore = score;
-    let decreasable = Math.round(score / 100);
-    decreasable = decreasable < 1 ? 1 : decreasable;
-    internalScore =+ decreasable;
+    const decreasable = Math.ceil(score / 100);
+    internalScore =- decreasable;
     return internalScore;
 }
